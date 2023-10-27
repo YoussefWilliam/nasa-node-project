@@ -72,12 +72,12 @@ const AppLayout = (props) => {
                   />
                 </Route>
                 <Route exact path="/launch">
-                  {/* <Launch
+                  <Launch
                     entered={anim.entered}
                     planets={planets}
                     submitLaunch={submitLaunch}
                     isPendingLaunch={isPendingLaunch}
-                  /> */}
+                  />
                 </Route>
                 <Route exact path="/upcoming">
                   <Upcoming
