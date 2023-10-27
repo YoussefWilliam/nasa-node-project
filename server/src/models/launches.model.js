@@ -36,4 +36,5 @@ launches.set(launch1.flightNumber, launch1);
 launches.set(launch2.flightNumber, launch2);
 launches.set(launch3.flightNumber, launch3);
 
-module.exports = { launches };
+const getAllLaunchesData = () => Array.from(launches.values());
+module.exports = { getAllLaunchesData };
