@@ -7,6 +7,10 @@ function usePlanets() {
 
   const getPlanets = useCallback(async () => {
     const fetchedPlanets = await httpGetPlanets();
+    console.log(
+      "🚀 ~ file: usePlanets.js:10 ~ getPlanets ~ fetchedPlanets:",
+      fetchedPlanets
+    );
     savePlanets(fetchedPlanets);
   }, []);
 
