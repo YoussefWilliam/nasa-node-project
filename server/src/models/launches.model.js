@@ -37,4 +37,37 @@ launches.set(launch2.flightNumber, launch2);
 launches.set(launch3.flightNumber, launch3);
 
 const getAllLaunchesData = () => Array.from(launches.values());
-module.exports = { getAllLaunchesData };
+
+const addNewLaunch = (launch) => {
+  const lastFlightNumber = [...launches.values()].pop().flightNumber;
+  const updatedFlightNumber = lastFlightNumber + 1;
+  launches.set(
+    updatedFlightNumber,
+    Object.assign(launch, {
+      flightNumber: updatedFlightNumber,
+      success: true,
+      upcoming: true,
+      customers: ["Testing", "NASA"],
+    })
+  );
+};
+
+const checkIfLaunchExist = (id) => {
+  return launches.has(parseInt(id));
+};
+
+const removeLaunch = (id) => {
+  launches.delete(parseInt(id));
+};
+
+const getSpecificLaunchById = (id) => {
+  return launches.get(parseInt(id));
+};
+
+module.exports = {
+  getAllLaunchesData,
+  addNewLaunch,
+  removeLaunch,
+  checkIfLaunchExist,
+  getSpecificLaunchById,
+};
