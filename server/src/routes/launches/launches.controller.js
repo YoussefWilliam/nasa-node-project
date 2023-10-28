@@ -11,19 +11,30 @@ const httpGetAllLaunches = (req, res) => {
 };
 
 const httpPostNewLaunch = (req, res) => {
-  console.log("here is the reqqqq::::", req.body);
-  if (!req.body) {
+  const launch = req.body;
+
+  if (
+    !launch.mission ||
+    !launch.rocket ||
+    !launch.launchDate ||
+    !launch.destination
+  ) {
     return res.status(400).json({
-      error: "Missing a body",
+      error: "Missing required launch property!",
     });
   }
 
-  const launch = req.body;
   launch.launchDate = new Date(launch.launchDate);
+
+  if (isNaN(launch.launchDate)) {
+    return res.status(400).json({
+      error: "Invalid Date format",
+    });
+  }
 
   addNewLaunch(launch);
 
-  return res.status(200).json(launch);
+  return res.status(201).json(launch);
 };
 
 const httpDeleteLaunch = (req, res) => {
